@@ -1,0 +1,3 @@
+# GDScript, python-like scripting language of Godot
+*.gd linguist-language=GDScript
+
