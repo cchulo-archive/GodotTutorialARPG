@@ -20,7 +20,7 @@ onready var animationState = animationTree.get("parameters/playback")
 func _ready():
 	animationTree.active = true
 
-func _physics_process(delta):
+func _process(delta):
 	match state:
 		MOVE:
 			move_state(delta)
@@ -28,6 +28,9 @@ func _physics_process(delta):
 			pass
 		ATTACK:
 			attack_state(delta)
+			
+func _physics_process(delta):
+	velocity = move_and_slide(velocity)
 
 func move_state(delta):
 	var input_vector = Vector2.ZERO
@@ -44,8 +47,6 @@ func move_state(delta):
 	else:
 		animationState.travel("Idle")
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
-	
-	velocity = move_and_slide(velocity)
 	
 	if Input.is_action_just_pressed("attack"):
 		state = ATTACK
