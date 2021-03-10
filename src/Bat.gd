@@ -11,5 +11,5 @@ func _physics_process(delta):
 	knockback = move_and_slide(knockback)
 
 func _on_Hurtbox_area_entered(area):
-	if area.knockback_vector != null:
+	if area is SwordHitbox:
 		knockback = area.knockback_vector * 150
