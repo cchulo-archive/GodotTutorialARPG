@@ -18,7 +18,7 @@ var roll_vector = Vector2.DOWN
 onready var animationPlayer = $AnimationPlayer
 onready var animationTree = $AnimationTree
 onready var animationState = animationTree.get("parameters/playback")
-onready var swordHitbox = $HitboxPivot/SwordHitbox
+onready var swordHitbox = $HitboxPivot/SwordHitbox as SwordHitbox
 
 func _ready():
 	animationTree.active = true
