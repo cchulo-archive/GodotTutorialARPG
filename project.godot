@@ -10,11 +10,17 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Area2D",
+"class": "Hitbox",
+"language": "GDScript",
+"path": "res://src/Hitbox.gd"
+}, {
+"base": "Hitbox",
 "class": "SwordHitbox",
 "language": "GDScript",
 "path": "res://src/SwordHitbox.gd"
 } ]
 _global_script_class_icons={
+"Hitbox": "",
 "SwordHitbox": ""
 }
 

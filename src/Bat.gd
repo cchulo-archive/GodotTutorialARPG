@@ -16,7 +16,7 @@ func _physics_process(delta):
 
 func _on_Hurtbox_area_entered(area):
 	if area is SwordHitbox:
-		stats.health -= 1
+		stats.health -= area.damage
 		knockback = area.knockback_vector * 150
 
 func _on_Stats_no_health():
