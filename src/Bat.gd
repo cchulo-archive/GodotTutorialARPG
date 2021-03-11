@@ -21,10 +21,6 @@ enum {
 }
 
 var state = CHASE
-
-func _ready():
-	print(stats.max_health)
-	print(stats.health)
 	
 func _process(delta):
 	match state:
