@@ -12,7 +12,7 @@
 
 [sub_resource type="ShaderMaterial" id=53]
 shader = ExtResource( 9 )
-shader_param/active = true
+shader_param/active = false
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 4.0
@@ -730,11 +730,36 @@ height = 6.0
 
 [sub_resource type="Animation" id=54]
 resource_name = "Start"
-length = 0.1
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:material:shader_param/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [sub_resource type="Animation" id=55]
 resource_name = "Stop"
 length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:material:shader_param/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 2
@@ -752,7 +777,6 @@ hframes = 60
 frame = 18
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 rotation = -1.5708
 shape = SubResource( 1 )
 
@@ -784,7 +808,6 @@ parameters/Roll/blend_position = Vector2( 0, 1 )
 parameters/Run/blend_position = Vector2( 0, 1 )
 
 [node name="HitboxPivot" type="Position2D" parent="."]
-visible = false
 position = Vector2( 0, -4 )
 rotation = 1.5708
 
@@ -798,7 +821,6 @@ shape = SubResource( 46 )
 disabled = true
 
 [node name="Hurtbox" parent="." instance=ExtResource( 5 )]
-visible = false
 collision_layer = 4
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
@@ -812,6 +834,8 @@ stream = ExtResource( 7 )
 anims/Start = SubResource( 54 )
 anims/Stop = SubResource( 55 )
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
+[connection signal="invincibility_ended" from="Hurtbox" to="." method="_on_Hurtbox_invincibility_ended"]
+[connection signal="invincibility_started" from="Hurtbox" to="." method="_on_Hurtbox_invincibility_started"]
 
 [editable path="HitboxPivot/SwordHitbox"]
 
