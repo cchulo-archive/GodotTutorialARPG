@@ -490,7 +490,7 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 position = Vector2( 160, 90 )
 texture = ExtResource( 3 )
 region_enabled = true
-region_rect = Rect2( 0, 0, 320, 180 )
+region_rect = Rect2( 0, 0, 1136, 672 )
 
 [node name="DirthPathTileMap" type="TileMap" parent="."]
 tile_set = SubResource( 1 )
@@ -509,6 +509,9 @@ tile_data = PoolIntArray( 4, 0, 196608, 5, 0, 6, 6, 0, 2, 65541, 0, 131072, 6554
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 128, 72 )
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/Player"]
+remote_path = NodePath("../../../Camera2D")
 
 [node name="Bushes" type="YSort" parent="YSort"]
 
@@ -621,4 +624,12 @@ position = Vector2( 304, 32 )
 [node name="Tree7" parent="YSort/Trees" instance=ExtResource( 9 )]
 position = Vector2( 192, 24 )
 
-[node name="HealthUI" parent="." instance=ExtResource( 8 )]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HealthUI" parent="CanvasLayer" instance=ExtResource( 8 )]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 128, 72 )
+current = true
+process_mode = 0
+smoothing_enabled = true
