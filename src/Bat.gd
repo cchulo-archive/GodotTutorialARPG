@@ -12,6 +12,7 @@ var velocity = Vector2.ZERO
 onready var stats = $Stats
 onready var playerDetectionZone = $PlayerDetectionZone
 onready var animatedSprite = $AnimatedSprite
+onready var hurtbox = $Hurtbox
 
 enum {
 	IDLE,
@@ -54,6 +55,7 @@ func _on_Hurtbox_area_entered(area):
 	if area is SwordHitbox:
 		stats.health -= area.damage
 		knockback = area.knockback_vector * 150
+		hurtbox.create_hit_effect()
 
 func _on_Stats_no_health():
 	queue_free()

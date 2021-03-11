@@ -30,6 +30,10 @@ config/name="GodotTutorialARPG"
 run/main_scene="res://scenes/World.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+PlayerStats="*res://assets/Player/PlayerStats.tscn"
+
 [display]
 
 window/size/width=320
