@@ -8,7 +8,6 @@ onready var heartUIEmpty = $HeartUIEmpty
 
 
 func set_hearts(value):
-	print(value)
 	hearts = clamp(value, 0, max_hearts)
 	if heartUIFull != null:
 		heartUIFull.rect_size.x = hearts * 15
